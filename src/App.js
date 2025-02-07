@@ -1,5 +1,6 @@
 import './App.css';
 import MenuItem from './components/MenuItem';
+import MenuHeader from './components/MenuHeader';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
@@ -82,17 +83,13 @@ const menuItems = [
 function App() {
   return (
     <div className='menu'>
-      <img src="/images/transparentBR.png" id="logo" alt="Menu Logo"></img>
-      <div className="text-container">
-        <h3 className="catchphrase" id="uniqueColorText"> Can't Baskin Without the Robbins</h3>
-        <h1 className="catchphrase" id="otherText">We got the scoop on everything!</h1>
-      </div>
+      <MenuHeader/>
       <div className="menu container text-center">
           {menuItems.map((food) => (
             <MenuItem 
               key={food.id}
               title={food.title} 
-              imgSource={'/images/' + food.imageName}
+              imgSource={process.env.PUBLIC_URL + '/images/' + food.imageName}
               description={food.description}
               price={food.price}
             />
